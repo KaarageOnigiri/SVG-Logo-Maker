@@ -5,7 +5,7 @@ inquirer.prompt([
     {
         type: 'input',
         message: 'Logo Text (Maximum three characters): ',
-        name: ''
+        name: 'textAnswer'
     },
     {
         type: 'input',
@@ -15,7 +15,7 @@ inquirer.prompt([
     {
         type: 'list',
         message: 'Shape: ',
-        name: 'shape',
+        name: 'shapeAnswer',
         choices: ['circle', 'triangle', 'square']
     },
     {
@@ -24,12 +24,4 @@ inquirer.prompt([
         name: 'shapeColor'
     }
 ])
-
-
-// console.log(`\nPlease type in your answers\n`);
-// inquirer.prompt([
-//     {
-//         type: 'input',
-//         message: title,
-//         name: 'title',
-//     },
+// .then((res) => )
