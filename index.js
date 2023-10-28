@@ -1,5 +1,14 @@
 const inquirer = require('inquirer');
 const { readFile, writeFile } = require('fs/promises');
+const { Shape, Triangle, Circle, Square } = require('./lib/shapes.js');
+
+// const shape = Shape();
+// const triangle = Triangle();
+// const circle = Circle();
+// const square = Square();
+
+console.log(new Triangle('something', 'blue', 'square', 'something').setTextColor());
+console.log(new Triangle('AAA', 'white', 'triangle', 'pink').render())
 
 inquirer.prompt([
     {
@@ -24,4 +33,14 @@ inquirer.prompt([
         name: 'shapeColor'
     }
 ])
-// .then((res) => )
+.then((res) => writeSVG(res))
+
+function writeSVG(res) {
+// make another function here to determine which Shape Class to run
+var whichShapeClass;
+
+switch(res.shapeAnswer) {
+    case 'circle':
+        sadas
+}
+}
