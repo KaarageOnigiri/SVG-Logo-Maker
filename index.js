@@ -8,7 +8,7 @@ const { Shape, Triangle, Circle, Square } = require('./lib/shapes.js');
 // const square = Square();
 
 console.log(new Triangle('something', 'blue', 'square', 'something').setTextColor());
-console.log(new Triangle('AAA', 'white', 'triangle', 'pink').render())
+console.log(new Square('AAA', 'white', 'triangle', 'pink').render())
 
 inquirer.prompt([
     {
@@ -36,11 +36,17 @@ inquirer.prompt([
 .then((res) => writeSVG(res))
 
 function writeSVG(res) {
-// make another function here to determine which Shape Class to run
-var whichShapeClass;
+    // make another function here to determine which Shape Class to run, then return the value
+    
+    // use the value from previous function for the following 'if' statement
 
-switch(res.shapeAnswer) {
-    case 'circle':
-        sadas
+    // then put it into the render function through fs.writeFile
+    
+    // (optional) search for the module exercises with the throw Error, then implement
+    // it into the Shape Class (more than 3 characters, invalid color, etc)
 }
-}
+
+// switch(res.shapeAnswer) {
+//     case 'circle':
+//         sadas
+// }
