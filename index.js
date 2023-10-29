@@ -1,14 +1,6 @@
 const inquirer = require('inquirer');
 const { readFile, writeFile } = require('fs/promises');
-const { Shape, Triangle, Circle, Square } = require('./lib/shapes.js');
-
-// const shape = Shape();
-// const triangle = Triangle();
-// const circle = Circle();
-// const square = Square();
-
-console.log(new Triangle('something', 'blue', 'square', 'something').setTextColor());
-console.log(new Square('AAA', 'white', 'triangle', 'pink').render())
+const { Triangle, Circle, Square } = require('./lib/shapes.js');
 
 inquirer.prompt([
     {
@@ -18,7 +10,7 @@ inquirer.prompt([
     },
     {
         type: 'input',
-        message: "Text Color: ",
+        message: "Text Color (OR a hexadecimal number): ",
         name: 'textColor'
     },
     {
@@ -29,24 +21,29 @@ inquirer.prompt([
     },
     {
         type: 'input',
-        message: "Shape's Color: ",
+        message: "Shape's Color (OR a hexadecimal number): ",
         name: 'shapeColor'
     }
 ])
 .then((res) => writeSVG(res))
+// .catch(err) => console.log('Error: ' + err)
+.then()
 
 function writeSVG(res) {
-    // make another function here to determine which Shape Class to run, then return the value
-    
-    // use the value from previous function for the following 'if' statement
-
-    // then put it into the render function through fs.writeFile
+    // make an if statement here to determine which Shape Class to run, then return the value
+    if (res.shapeAnswer === 'circle') {
+        writeFile(`./Output/logo.svg`, new Circle(res.textAnswer, res.textColor, res.shapeAnswer, res.shapeColor).render());
+        console.log(`Generated logo.svg in the Output folder.`);
+    }
+    if (res.shapeAnswer === 'triangle') {
+        writeFile(`./Output/logo.svg`, new Triangle(res.textAnswer, res.textColor, res.shapeAnswer, res.shapeColor).render());
+        console.log(`Generated logo.svg in the Output folder.`);
+    }
+    if (res.shapeAnswer === 'square') {
+        writeFile(`./Output/logo.svg`, new Square(res.textAnswer, res.textColor, res.shapeAnswer, res.shapeColor).render());
+        console.log(`Generated logo.svg in the Output folder.`);
+    }
     
     // (optional) search for the module exercises with the throw Error, then implement
     // it into the Shape Class (more than 3 characters, invalid color, etc)
 }
-
-// switch(res.shapeAnswer) {
-//     case 'circle':
-//         sadas
-// }
