@@ -6,8 +6,21 @@ inquirer.prompt([
     {
         type: 'input',
         message: 'Logo Text (Maximum three characters): ',
-        name: 'textAnswer'
+        name: 'textAnswer',
+        validate: function (input) {
+            // Declare function as asynchronous, and save the done callback
+            const done = this.async();
+        
+            if (input.length > 3) {
+            // Pass the return value in the done callback
+            done('Error: Cannot have more than 3 characters.');
+            return;
+            }
+            // Pass the return value in the done callback
+            done(null, true);
+          }
     },
+    // validate
     {
         type: 'input',
         message: "Text Color (OR a hexadecimal number): ",
@@ -25,9 +38,8 @@ inquirer.prompt([
         name: 'shapeColor'
     }
 ])
-.then((res) => writeSVG(res))
+.then((res) => writeSVG(res));
 // .catch(err) => console.log('Error: ' + err)
-.then()
 
 function writeSVG(res) {
     // make an if statement here to determine which Shape Class to run, then return the value
